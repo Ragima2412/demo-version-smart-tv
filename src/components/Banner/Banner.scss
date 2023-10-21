@@ -1,0 +1,58 @@
+@import '../../scss/base/mixin';
+@import '../../scss/base/variables';
+
+.banner {
+    position: absolute;
+    top: 20%;
+    transition: 1s ease;
+    right: 0;
+    visibility: visible;
+    width: 251px;
+    height: 357px;
+    padding: 30px 10px 12px 10px;
+    gap: 20px;
+    @include flex-box(column);
+    background-color: $light-blue-bg-color;
+    color: $black-color;
+  
+    &__title {
+        line-height: 18.75px;
+        text-align: center;
+    }
+
+    &__qr-code-wrapper {
+        background-color: $white-color;
+        padding: 10px;
+        width: 126px;
+        height: 126px;
+    }
+
+    &__qr-code {
+        width: 100%;
+        height: 100%;
+    }
+
+    &__description {
+        font-size: 14px;
+        line-height: 16.41px;
+        text-align: center;
+    }
+
+    &__button {
+        padding: 16px;
+        background-color: $black-color;
+        color: $light-blue-bg-color;
+        text-align: center;
+        width: 156px;
+        height: 52px;
+        text-transform: lowercase;
+        font-size: 16px;
+        &:hover {
+            background-color: $white-color;
+            color: $black-color;
+        }
+    }
+}
+.hidden {  
+    visibility: hidden;
+}
