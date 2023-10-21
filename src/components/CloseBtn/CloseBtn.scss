@@ -1,0 +1,42 @@
+@import '../../scss/base/mixin';
+@import '../../scss/base/variables';
+
+.close-btn {
+  position: absolute;
+  width: 88px;
+  height: 52px;
+  border: 2px solid $black-color;
+  background-color: $white-color;
+  @include flex-box;
+  top: 20px;
+  right: 20px;
+
+  &:active {
+    background-color: $black-color;
+    .cross  div {
+      background-color: $white-color;
+    }
+  }
+}
+
+.cross {
+  width: 30px;
+  height: 30px;
+  @include flex-box;
+  position: relative;
+
+  &__diag1{
+    position: absolute;
+    width:60%; height:60%;
+    clip-path: polygon(90% 0, 100% 0%, 10% 100%, 0% 100%);
+    background:$black-color;  
+  }
+
+  &__diag2{
+    position: absolute;
+    width:60%; height:60%;
+    clip-path: polygon(0 0, 10% 0, 100% 100%, 90% 100%);
+    background: $black-color;
+  }
+}
+

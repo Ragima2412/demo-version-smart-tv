@@ -1,3 +1,3 @@
 export interface IBanner {
-    isVisible: boolean
+    isVisible: boolean,
 } 

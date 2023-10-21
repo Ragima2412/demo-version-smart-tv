@@ -1,0 +1,21 @@
+@import '../../scss/base/mixin';
+@import '../../scss/base/variables';
+
+.scancode {
+    position: absolute;
+    width: 314px;
+    @include flex-box;
+    background-color: inherit;
+    right: 40px;
+    bottom: 40px;
+    gap: 0 10px;
+
+    &__info {
+     width: 195px;
+     font-size: 16px;
+     line-height: 18.75px;
+     color: $white-color;
+     text-transform: uppercase;
+     text-align: end;
+    }
+}
