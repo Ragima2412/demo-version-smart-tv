@@ -1,9 +1,9 @@
 import React from "react";
-import './DialCodePage.scss';
 import HeroImageBg from '../../components/HeroImageBg/HeroImageBg';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import CloseBtn from "../../components/CloseBtn/CloseBtn";
 import ScanCode from "../../components/ScanCode/ScanCode";
+import './DialCodePage.scss';
 
 const DialCodePage = () => {    
  return (

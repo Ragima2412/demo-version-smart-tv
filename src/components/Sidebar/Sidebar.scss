@@ -6,8 +6,30 @@
     height: 100%;
     left: 0;
     width: 380px;
-    // padding: 40px 24px;
-    background-color: $light-blue-bg-color;
+    background-color: $light-blue-bg-color; 
+    @include flex-box;
+}
+
+.submit-info {
+    @include flex-box(column);
+    width: 284px;
+    gap: 0 15px;
+    
+    &__title {font-weight: 700;
+        padding:  0 30px;
+        font-size: 32px;
+        line-height: 37.5px;
+        text-align: center; 
+        text-transform: uppercase;    
+
+    }
+
+    &__notice {
+     font-weight: 400;
+     font-size: 14px;
+     line-height: 16.41px;
+     text-align: center;
+    }
 }
 
 .form {
@@ -24,8 +46,7 @@
         text-align: center;
     }
 
-    &__dialed-number {
-    }
+    &__dialed-number {}
 
     &__information {
         font-weight: 400;
