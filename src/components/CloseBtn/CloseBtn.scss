@@ -11,7 +11,7 @@
   top: 20px;
   right: 20px;
 
-  &:active {
+  &:active, &:hover {
     background-color: $black-color;
     .cross  div {
       background-color: $white-color;

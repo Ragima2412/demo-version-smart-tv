@@ -4,7 +4,7 @@ import "./DialPanelItem.scss";
 
 const DialPanelItem: FC<IDialPanelItem> = ({ value }) => {
   return( 
-  <div className="dial-panel-item"
+  <div className="dial-panel-item"  
   >{value}
   </div>
   );

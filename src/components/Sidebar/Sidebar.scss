@@ -59,6 +59,12 @@
         text-align: center;
     }
 
+    &__error {
+        text-transform: uppercase;
+        color: $red-color;
+        line-height: 18.75px;
+    }
+
     &__submit-btn {
         font-size: 16px;
         line-height: 18.75px;
@@ -69,6 +75,10 @@
         border: 1px solid $grey-color;
         background-color: inherit;
         text-transform: uppercase;
+
+        &:disabled {
+            cursor: default;
+        }
 
         &:hover {
             background-color: $black-color;

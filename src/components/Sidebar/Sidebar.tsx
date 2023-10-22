@@ -8,6 +8,7 @@ const Sidebar = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>("+7(_ _ _)_ _ _ -_ _ -_ _");
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
  
   const setDialedNumber = (value: DialPanelValue) => {
     if (typeof value === "number") {
@@ -31,7 +32,7 @@ const Sidebar = () => {
 const onSubmit = () => {
     setIsSubmitted(true);
 }
-
+console.log('isError', isError)
   return (
     <div className="sidebar">
       {isSubmitted ? (
@@ -49,9 +50,10 @@ const onSubmit = () => {
           </h3>
           <p className="form__dialed-number">{phoneNumber}</p>
           <p className="form__information">
-            И с вами свяжется наш менеджер для дальнейшей консультации
+            и с Вами свяжется наш менеджер для дальнейшей консультации
           </p>      
-            <DialPanel setDialedNumber={setDialedNumber} />
+            <DialPanel setDialedNumber={setDialedNumber} setIsError={setIsError}/>
+            {isError && <p className="form__error">неверно введен номер</p>}
           <Checkbox isChecked={isChecked} toggleCheckbox={toggleCheckbox} label={'Согласие на обработку персональных данных'}/>     
           <button className="form__submit-btn" disabled={checkEmptySpaces(phoneNumber) || !isChecked} onClick={onSubmit}>
             Подтвердить номер</button>

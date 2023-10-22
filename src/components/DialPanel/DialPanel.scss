@@ -13,5 +13,9 @@
         &:last-child {
             max-width: 88px;
         }  
+       &:active div, &:hover div {
+        background-color: $black-color;
+        color: $white-color;
+       }   
     }  
 }
