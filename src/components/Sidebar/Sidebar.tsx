@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import DialPanel from "../DialPanel/DialPanel";
-import { DialPanelValue } from "../../types/types";
+import { validatePhoneNumber } from "../../helper/validationNumber";
+import SubmitInfo from "../SubmitInfo/SubmitInfo";
+import Form from "../Form/Form";
 import "./Sidebar.scss";
-import Checkbox from "../Checkbox/Checkbox";
+import { DialPanelValue } from "../../types/types";
 
 const Sidebar = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>("+7(_ _ _)_ _ _ -_ _ -_ _");
@@ -10,6 +11,7 @@ const Sidebar = () => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
  
+  console.log(phoneNumber)
   const setDialedNumber = (value: DialPanelValue) => {
     if (typeof value === "number") {
       const phoneArr = [...phoneNumber];
@@ -17,8 +19,9 @@ const Sidebar = () => {
       if (itemIdx) {
         phoneArr[itemIdx] = String(value);
       }
-      setPhoneNumber(phoneArr.join(''));
+      setPhoneNumber(phoneArr.join('').replace(/\s/g, ''));
     } else {
+      setIsError(false);
       setPhoneNumber("+7(_ _ _)_ _ _ -_ _ -_ _");
     }
   };
@@ -26,38 +29,35 @@ const Sidebar = () => {
   const checkEmptySpaces = (phoneNumber: string) => {
    return phoneNumber.includes('_')
   }
+
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
   };
-const onSubmit = () => {
-    setIsSubmitted(true);
-}
-console.log('isError', isError)
+  
+  const onSubmit = (event) => {
+  event.preventDefault()
+  const isPhoneNumValid = (validatePhoneNumber(phoneNumber));
+  if(isPhoneNumValid) {
+    setIsSubmitted(true)
+  } else {
+    setIsError(true);
+  }
+};
+
   return (
     <div className="sidebar">
       {isSubmitted ? (
-        <div className="sidebar__submit-info submit-info">
-          <h1 className="submit-info__title">Заявка принята</h1>
-          <p className="submit-info__notice">Держите телефон под рукой.</p>
-          <p className="submit-info__notice">
-            Скоро с Вами свяжется наш менеджер.
-          </p>
-        </div>
+        <SubmitInfo />
       ) : (
-        <form className="sidebar__form form">
-          <h3 className="form__header">
-            Введите ваш номер мобильного телефона
-          </h3>
-          <p className="form__dialed-number">{phoneNumber}</p>
-          <p className="form__information">
-            и с Вами свяжется наш менеджер для дальнейшей консультации
-          </p>      
-            <DialPanel setDialedNumber={setDialedNumber} setIsError={setIsError}/>
-            {isError && <p className="form__error">неверно введен номер</p>}
-          <Checkbox isChecked={isChecked} toggleCheckbox={toggleCheckbox} label={'Согласие на обработку персональных данных'}/>     
-          <button className="form__submit-btn" disabled={checkEmptySpaces(phoneNumber) || !isChecked} onClick={onSubmit}>
-            Подтвердить номер</button>
-        </form>
+        <Form 
+        phoneNumber={phoneNumber}
+        setDialedNumber={setDialedNumber}
+        isError={isError}
+        isChecked={isChecked}
+        onSubmit={onSubmit}
+        toggleCheckbox={toggleCheckbox}
+        checkEmptySpaces={checkEmptySpaces}
+        />     
       )}
     </div>
   );

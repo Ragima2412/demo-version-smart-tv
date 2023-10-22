@@ -1,0 +1,24 @@
+@import '../../scss/base/mixin';
+@import '../../scss/base/variables';
+
+.submit-info {
+    @include flex-box(column);
+    width: 284px;
+    gap: 0 15px;
+
+    &__title {
+        font-weight: 700;
+        padding: 0 30px;
+        font-size: 32px;
+        line-height: 37.5px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__notice {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16.41px;
+        text-align: center;
+    }
+}
