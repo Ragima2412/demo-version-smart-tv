@@ -1,5 +1,6 @@
 @import '../../scss/base/mixin';
 @import '../../scss/base/variables'; 
+
 .form {
     @include flex-box(column, start, center);
     gap: 13px 0;
@@ -24,7 +25,7 @@
     &__dialed-number--error {
         color: $red-color;
     }
-    
+
     &__information {
         font-weight: 400;
         font-size: 14px;

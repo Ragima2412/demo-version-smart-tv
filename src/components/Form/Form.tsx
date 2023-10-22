@@ -10,12 +10,18 @@ const Form = ({
   isChecked,
   toggleCheckbox,
   onSubmit,
-  checkEmptySpaces
+  checkEmptySpaces,
 }) => {
   return (
     <form className="sidebar__form form">
       <h3 className="form__header">Введите ваш номер мобильного телефона</h3>
-      <p className={isError ? "form__dialed-number--error": "form__dialed-number"}>{phoneNumber}</p>
+      <p
+        className={
+          isError ? "form__dialed-number--error" : "form__dialed-number"
+        }
+      >
+        {phoneNumber}
+      </p>
       <p className="form__information">
         и с Вами свяжется наш менеджер для дальнейшей консультации
       </p>

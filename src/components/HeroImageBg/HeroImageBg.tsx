@@ -1,11 +1,12 @@
 import React from 'react';
 import './HeroImageBg.scss';
-import TravelImg from '../../assets/images/travel.jpg';
+import TravelImg from '../../assets/images/travel.jpg'
 
 const HeroImageBg = () => {
     return(
         <div className='hero-image-bg'> 
-           <img className='hero-image-bg__img' src={TravelImg} alt="travelImage" />
+        hghghghg
+           {/* <img className='hero-image-bg__img' src={TravelImg} alt="travelImage" /> */}
         </div>
     )
 };

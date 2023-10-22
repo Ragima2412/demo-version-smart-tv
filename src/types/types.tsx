@@ -20,7 +20,7 @@ export interface IQRCode {
   };
 }
 
-export interface  IForm {
+export interface IForm {
   phoneNumber: string;
   setDialedNumber: (val: DialPanelValue) => void;
   isError: boolean;
@@ -28,7 +28,7 @@ export interface  IForm {
   setIsError: React.Dispatch<React.SetStateAction<boolean>>;
   toggleCheckbox: () => void;
   onSubmit: () => void;
-  checkEmptySpaces:(val: string) => void;
-} 
+  checkEmptySpaces: (val: string) => void;
+}
 
 export type DialPanelValue = string | number;
