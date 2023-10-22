@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { validatePhoneNumber } from "../../helper/validationNumber";
 import SubmitInfo from "../SubmitInfo/SubmitInfo";
 import Form from "../Form/Form";
 import { DialPanelValue } from "../../types/types";
 import "./Sidebar.scss";
+import { setInActivityTimer } from "../../helper/setInActivityTimer";
 
 const Sidebar = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>(
@@ -12,6 +13,10 @@ const Sidebar = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
+
+  useEffect(() => {
+    setInActivityTimer();
+  }, )
 
   const setDialedNumber = (value: DialPanelValue) => {
     if (typeof value === "number") {
