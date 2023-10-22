@@ -1,0 +1,16 @@
+@import '../../scss/base/mixin';
+@import '../../scss/base/variables';
+
+.dial-panel {
+   @include flex-box(row, space-between, center, wrap);
+    width: 284px;
+    gap: 10px;
+
+    &__btn {
+        flex:  1 0 88px;    
+        cursor: pointer;
+        &:last-child {
+            max-width: 88px;
+        }  
+    }  
+}

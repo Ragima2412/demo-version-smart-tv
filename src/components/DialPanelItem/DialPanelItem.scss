@@ -1,0 +1,10 @@
+@import '../../scss/base/mixin';
+@import '../../scss/base/variables';
+
+.dial-panel-item {
+    background-color: inherit;
+    border: 2px solid $black-color;
+    padding: 12px 30px;
+    color: $black-color;
+    text-align: center;
+}
