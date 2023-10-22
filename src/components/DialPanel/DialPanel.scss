@@ -5,6 +5,7 @@
    @include flex-box(row, space-between, center, wrap);
     width: 284px;
     gap: 10px;
+    padding: 20px 0;
 
     &__btn {
         flex:  1 0 88px;    

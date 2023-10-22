@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import DialPanel from "../DialPanel/DialPanel";
 import { DialPanelValue } from "../../types/types";
 import "./Sidebar.scss";
+import Checkbox from "../Checkbox/Checkbox";
 
 const Sidebar = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>("+7(_ _ _)_ _ _ -_ _ -_ _");
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
 
+  console.log('I am again')
   const setDialedNumber = (value: DialPanelValue) => {
     if (typeof value === "number") {
       const phoneArr = [...phoneNumber];
@@ -19,6 +22,10 @@ const Sidebar = () => {
     } else {
       setPhoneNumber("+7(_ _ _)_ _ _ -_ _ -_ _");
     }
+  };
+
+  const toggleCheckbox = () => {
+    setIsChecked(!isChecked);
   };
 
   return (
@@ -34,22 +41,14 @@ const Sidebar = () => {
       ) : (
         <form className="sidebar__form form">
           <h3 className="form__header">
-            {" "}
             Введите ваш номер мобильного телефона
           </h3>
           <p className="form__dialed-number">{phoneNumber}</p>
           <p className="form__information">
             И с вами свяжется наш менеджер для дальнейшей консультации
-          </p>
-          <div className="form__dial-code">
+          </p>      
             <DialPanel setDialedNumber={setDialedNumber} />
-          </div>
-          <div className="form__checkbox-wrapper">
-            <input className="form__checkbox" type="checkbox" />
-            <label className="form__label">
-              Согласие на обработку персональных данных
-            </label>
-          </div>
+          <Checkbox isChecked={isChecked} toggleCheckbox={toggleCheckbox} label={'Согласие на обработку персональных данных'}/>     
           <button className="form__submit-btn">Подтвердить номер</button>
         </form>
       )}

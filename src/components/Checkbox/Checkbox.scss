@@ -1,0 +1,54 @@
+@import '../../scss/base/mixin';
+@import '../../scss/base/variables';
+
+.custom-checkbox {
+    &__label {
+        display: block;
+        position: relative;
+        padding-left: 70px;
+        font-size: 14px;
+        line-height: 16.41px;
+        color: $light-grey-color;
+        padding: 10px 10px 10px 68px;
+        cursor: pointer;
+    }
+
+    &__input {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        cursor: pointer;
+    }
+
+    &__checkmark {
+        position: absolute;
+        top: 6px;
+        left: 10px;
+        height: 40px;
+        width: 40px;
+        background-color: inherit;
+        border: 2px solid $black-color;
+
+        &:after {
+            left: 13px;
+            top: 2px;
+            width: 11px;
+            height: 23px;
+            border: solid $black-color;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+
+            content: "";
+            position: absolute;
+            display: none;
+        }
+    }
+
+    &__input:checked+&__checkmark {
+        background-color: inherit;
+    }
+
+    &__input:checked+&__checkmark:after {
+        display: block;
+    }
+}

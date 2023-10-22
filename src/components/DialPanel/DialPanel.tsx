@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
-import "./DialPanel.scss";
 import { DialPanelValue, IDialPanel } from "../../types/types";
 import DialPanelItem from "../DialPanelItem/DialPanelItem";
+import "./DialPanel.scss";
 
 const DialPanel: FC<IDialPanel> = ({setDialedNumber}) => {
   const [valuesList, setValuesList] = useState<DialPanelValue[]>();
