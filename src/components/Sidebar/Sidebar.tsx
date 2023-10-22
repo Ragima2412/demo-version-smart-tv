@@ -6,11 +6,9 @@ import Checkbox from "../Checkbox/Checkbox";
 
 const Sidebar = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>("+7(_ _ _)_ _ _ -_ _ -_ _");
-  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [isError, setIsError] = useState<boolean>(false);
-
-  console.log('I am again')
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+ 
   const setDialedNumber = (value: DialPanelValue) => {
     if (typeof value === "number") {
       const phoneArr = [...phoneNumber];
@@ -24,9 +22,15 @@ const Sidebar = () => {
     }
   };
 
+  const checkEmptySpaces = (phoneNumber: string) => {
+   return phoneNumber.includes('_')
+  }
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
   };
+const onSubmit = () => {
+    setIsSubmitted(true);
+}
 
   return (
     <div className="sidebar">
@@ -49,7 +53,8 @@ const Sidebar = () => {
           </p>      
             <DialPanel setDialedNumber={setDialedNumber} />
           <Checkbox isChecked={isChecked} toggleCheckbox={toggleCheckbox} label={'Согласие на обработку персональных данных'}/>     
-          <button className="form__submit-btn">Подтвердить номер</button>
+          <button className="form__submit-btn" disabled={checkEmptySpaces(phoneNumber) || !isChecked} onClick={onSubmit}>
+            Подтвердить номер</button>
         </form>
       )}
     </div>
