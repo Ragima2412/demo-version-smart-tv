@@ -22,13 +22,12 @@ export interface IQRCode {
 
 export interface IForm {
   phoneNumber: string;
-  setDialedNumber: (val: DialPanelValue) => void;
   isError: boolean;
   isChecked: boolean;
-  setIsError: React.Dispatch<React.SetStateAction<boolean>>;
+  isDisabled: boolean;
+  onSubmit: (e) => void;
   toggleCheckbox: () => void;
-  onSubmit: () => void;
-  checkEmptySpaces: (val: string) => void;
+  setDialedNumber: (val: DialPanelValue) => void;
 }
 
 export interface IKeyboardNavigation {

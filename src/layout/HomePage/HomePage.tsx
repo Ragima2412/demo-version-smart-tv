@@ -1,14 +1,13 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import "./HomePage.scss";
+import React, { useEffect, useState } from "react";
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 import Banner from "../../components/Banner/Banner";
+import "./HomePage.scss";
 
 const HomePage = () => {
 
 const [isVisible, setIsVisible] = useState<boolean>(false);
 
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     const timerId = setTimeout(() => {
         setIsVisible(true);
     }, 5000);

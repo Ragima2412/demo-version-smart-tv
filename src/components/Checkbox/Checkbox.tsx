@@ -1,13 +1,13 @@
 import React from "react";
-import "./Checkbox.scss";
 import { ICheckbox } from "../../types/types";
+import "./Checkbox.scss";
 
 const Checkbox: React.FC<ICheckbox> = ({ isChecked, toggleCheckbox, label }) => {
  
   const onCheckBoxClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     toggleCheckbox()
-  }
+  };
     return (
         <div className="custom-checkbox">
         <label className="custom-checkbox__label">

@@ -1,6 +1,5 @@
 @import '../../scss/base/mixin';
 @import '../../scss/base/variables';
-@import '../../scss/base/common.scss';
 
 .dial-panel {
    @include flex-box(row, space-between, center, wrap);

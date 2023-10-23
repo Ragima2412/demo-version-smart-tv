@@ -1,17 +1,19 @@
-import React from "react";
-import "./Form.scss";
+import React, { FC } from "react";
 import DialPanel from "../DialPanel/DialPanel";
 import Checkbox from "../Checkbox/Checkbox";
+import "./Form.scss";
+import { IForm } from "../../types/types";
 
-const Form = ({
+const Form:FC<IForm> = ({
   phoneNumber,
   setDialedNumber,
   isError,
   isChecked,
   toggleCheckbox,
   onSubmit,
-  checkEmptySpaces,
+  isDisabled
 }) => {
+  console.log(isDisabled)
   return (
     <form className="sidebar__form form">
       <h3 className="form__header">Введите ваш номер мобильного телефона</h3>
@@ -33,7 +35,7 @@ const Form = ({
         label={"Согласие на обработку персональных данных"}
       />
       <button
-        className="form__submit-btn button"
+        className={!isDisabled ? "form__submit-btn--disabled button": "form__submit-btn button"}
         // disabled={checkEmptySpaces(phoneNumber) || !isChecked}
         onClick={(e) => onSubmit(e)}
       >
