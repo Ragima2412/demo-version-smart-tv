@@ -33,7 +33,7 @@ const Form = ({
         label={"Согласие на обработку персональных данных"}
       />
       <button
-        className="form__submit-btn"
+        className="form__submit-btn button"
         disabled={checkEmptySpaces(phoneNumber) || !isChecked}
         onClick={(e) => onSubmit(e)}
       >

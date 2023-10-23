@@ -31,4 +31,8 @@ export interface IForm {
   checkEmptySpaces: (val: string) => void;
 }
 
+export interface IKeyboardNavigation {
+  btnElements?: NodeListOf<Element> | undefined;
+}
+
 export type DialPanelValue = string | number;

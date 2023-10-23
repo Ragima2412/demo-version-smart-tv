@@ -3,10 +3,10 @@ export const setInActivityTimer = () => {
 
     function resetInactivityTimer() {
       clearTimeout(inactivityTimer);
-      inactivityTimer = setTimeout(redirectOnInactivity, 10000); 
+      // inactivityTimer = setTimeout(redirectOnInactivity, 10000); 
     }
     
-    function redirectOnInactivity() {
+    function redirectOnInactivity() {   
       window.location.pathname = '/'; 
     }
        

@@ -18,8 +18,8 @@ const DialPanel: FC<IDialPanel> = ({ setDialedNumber }) => {
   return (
     <div className="dial-panel">
       {valuesList?.map((val, idx) => (
-        <div className="dial-panel__btn" onClick={() => setDialedNumber(val)}>
-          <DialPanelItem value={val} key={idx} />
+        <div className="dial-panel__btn button" key={idx} onClick={() => setDialedNumber(val)} >
+          <DialPanelItem value={val}  />
         </div>
       ))}
     </div>

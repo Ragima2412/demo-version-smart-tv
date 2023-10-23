@@ -1,5 +1,6 @@
 @import '../../scss/base/mixin';
 @import '../../scss/base/variables';
+@import '../../scss/base/common.scss';
 
 .custom-checkbox {
     &__label {
@@ -10,14 +11,14 @@
         line-height: 16.41px;
         color: $light-grey-color;
         padding: 10px 10px 10px 68px;
-        cursor: pointer;
+ 
     }
 
     &__input {
         position: absolute;
         opacity: 0;
         top: 0;
-        cursor: pointer;
+        
     }
 
     &__checkmark {
@@ -27,7 +28,8 @@
         height: 40px;
         width: 40px;
         background-color: inherit;
-        border: 2px solid $black-color;
+        border: 2px solid $black-color; 
+        cursor: pointer;     
 
         &:after {
             left: 13px;

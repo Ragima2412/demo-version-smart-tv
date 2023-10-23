@@ -1,12 +1,14 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { validatePhoneNumber } from "../../helper/validationNumber";
+import { useNavigate } from 'react-router-dom';
 import SubmitInfo from "../SubmitInfo/SubmitInfo";
 import Form from "../Form/Form";
+import { setInActivityTimer } from "../../helper/setInActivityTimer";
 import { DialPanelValue } from "../../types/types";
 import "./Sidebar.scss";
-import { setInActivityTimer } from "../../helper/setInActivityTimer";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState<string>(
     "+7(_ _ _)_ _ _ -_ _ -_ _"
   );
@@ -45,6 +47,8 @@ const Sidebar = () => {
     const isPhoneNumValid = validatePhoneNumber(phoneNumber);
     if (isPhoneNumValid) {
       setIsSubmitted(true);
+      navigate('/success')
+
     } else {
       setIsError(true);
     }

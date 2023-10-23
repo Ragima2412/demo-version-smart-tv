@@ -4,6 +4,10 @@ import { ICheckbox } from "../../types/types";
 
 const Checkbox: React.FC<ICheckbox> = ({ isChecked, toggleCheckbox, label }) => {
  
+  const onCheckBoxClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    toggleCheckbox()
+  }
     return (
         <div className="custom-checkbox">
         <label className="custom-checkbox__label">
@@ -13,10 +17,9 @@ const Checkbox: React.FC<ICheckbox> = ({ isChecked, toggleCheckbox, label }) => 
             checked={isChecked}
             onChange={toggleCheckbox}
           />
-          <span className="custom-checkbox__checkmark"></span>
+          <button className="custom-checkbox__checkmark button" onClick={(e) => onCheckBoxClick(e)}></button>
           {label}
         </label>      
-
         </div>
     )
   }

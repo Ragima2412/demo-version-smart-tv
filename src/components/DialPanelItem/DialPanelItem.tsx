@@ -3,10 +3,11 @@ import { IDialPanelItem } from "../../types/types";
 import "./DialPanelItem.scss";
 
 const DialPanelItem: FC<IDialPanelItem> = ({ value }) => {
+
   return( 
-  <div className="dial-panel-item"  
+  <button className="dial-panel-item" onClick={(e) => e.preventDefault()} 
   >{value}
-  </div>
+  </button>
   );
 };
 export default DialPanelItem;
