@@ -4,7 +4,7 @@ import DialCodePage from '../DialCodePage/DialCodePage';
 import HomePage from '../HomePage/HomePage';
 import './Main.scss';
 
-const Main = () => {  
+const Main = () => {   
   return( 
   <div className="main">  
       <Routes>

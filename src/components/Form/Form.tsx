@@ -34,7 +34,7 @@ const Form = ({
       />
       <button
         className="form__submit-btn button"
-        disabled={checkEmptySpaces(phoneNumber) || !isChecked}
+        // disabled={checkEmptySpaces(phoneNumber) || !isChecked}
         onClick={(e) => onSubmit(e)}
       >
         Подтвердить номер

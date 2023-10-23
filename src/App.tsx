@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Main from '../src/layout/Main/Main';
-import './App.scss';
+import React, { useEffect, useRef } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import Main from "../src/layout/Main/Main";
+import "./App.scss";
 
 function handleEnter({ isFocusPresent, activeElement }) {
   if (!isFocusPresent) return;
@@ -19,52 +19,40 @@ function handleArrowKey({
   isFocusPresent,
   availableElement,
   activeElement,
-  availableElements
+  availableElements,
 }: {
-  key: any
-  isFocusPresent:any,
-  availableElement?: any,
-  activeElement: Element | null ,
-  availableElements: any
+  key: any;
+  isFocusPresent: any;
+  availableElement?: any;
+  activeElement: Element | null;
+  availableElements: any;
 }) {
-  // console.log({ isFocusPresent, activeElement, availableElement });
+
   if (!isFocusPresent) availableElements[0].focus();
 
-  const currentIndex = Array.from(availableElements).findIndex(
+  let currentIndex = Array.from(availableElements).findIndex(
     (availableElement) => availableElement === activeElement
   );
 
   if (key === "ArrowDown") {
     availableElements[currentIndex + 1]?.focus();
-    console.log(currentIndex, key)
   }
   if (key === "ArrowUp") {
-  
-    availableElements[currentIndex - 1]?.focus();
-    console.log(currentIndex, key)
-  }
-  if (key === "ArrowLeft") {                              //added
-    availableElements[currentIndex +1]?.focus();
-    console.log(currentIndex, key)
-  } 
-  if (key === "ArrowRight") {                             //added
-    availableElements[currentIndex + 1]?.focus();
-    console.log(currentIndex, key)
+    availableElements[currentIndex - 1]?.focus();    
   }
 }
 
 function handleEvents({ e, parentNode, selectors }) {
   const key = e.key;
-  if (!["ArrowUp", "ArrowDown", "ArrowLeft","ArrowRight", "Enter"].includes(key)) {  //added
-    console.log("invalid key", key);
+  if (
+    !["ArrowUp", "ArrowDown", "Enter"].includes(key)
+  ) {  
     return;
   }
 
   const activeElement = document.activeElement;
-  const availableElements = parentNode.querySelectorAll(selectors); 
-  console.log("availableElements",availableElements)
+  let availableElements = parentNode.querySelectorAll(selectors);
 
-  // No elements are available to loop through.
   if (!availableElements.length) return;
   const isFocusPresent = parentNode.contains(activeElement);
 
@@ -74,38 +62,34 @@ function handleEvents({ e, parentNode, selectors }) {
   handleArrowKey({ key, isFocusPresent, activeElement, availableElements });
 }
 
-
-function useArrowKeyNavigation({selectors}){
+function useArrowKeyNavigation({ selectors }) {
   const parentNode = useRef<HTMLDivElement | null>(null);
 
+
+  const eventHandler = (e) =>
+    handleEvents({ e, parentNode: parentNode.current, selectors });
+
   useEffect(() => {
-    const eventHandler = (e) => handleEvents({ e, parentNode: parentNode.current, selectors });
     document.addEventListener("keydown", eventHandler);
     return () => document.addEventListener("keydown", eventHandler);
-  }, []);
-  
+  }, [selectors]);
+
   return parentNode;
 }
 
 export function ArrowKeyNav({ selectors = "a,button,input", children }) {
-  const parentNode = useArrowKeyNavigation({selectors})
+  const parentNode = useArrowKeyNavigation({ selectors });
 
-  return (
-    <div ref={parentNode}>
-      {children}
-    </div>
-  );
+  return <div ref={parentNode}>{children}</div>;
 }
-
-
 
 function App() {
   return (
-    <Router>
-      <ArrowKeyNav>
-         <Main />   
-        </ArrowKeyNav>   
-    </Router>
+    <ArrowKeyNav>
+      <Router>
+        <Main />
+      </Router>
+    </ArrowKeyNav>
   );
 }
 

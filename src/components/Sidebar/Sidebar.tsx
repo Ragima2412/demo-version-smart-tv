@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { validatePhoneNumber } from "../../helper/validationNumber";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import SubmitInfo from "../SubmitInfo/SubmitInfo";
 import Form from "../Form/Form";
 import { setInActivityTimer } from "../../helper/setInActivityTimer";
@@ -18,7 +18,18 @@ const Sidebar = () => {
 
   useEffect(() => {
     setInActivityTimer();
-  }, )
+
+    const handleKeyPress = (e) => {
+      if (e.key >= "0" && e.key <= "9") {
+        setDialedNumber(parseInt(e.key))
+      } 
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [phoneNumber]);
 
   const setDialedNumber = (value: DialPanelValue) => {
     if (typeof value === "number") {
@@ -47,8 +58,7 @@ const Sidebar = () => {
     const isPhoneNumValid = validatePhoneNumber(phoneNumber);
     if (isPhoneNumValid) {
       setIsSubmitted(true);
-      navigate('/success')
-
+      navigate("/success");
     } else {
       setIsError(true);
     }
