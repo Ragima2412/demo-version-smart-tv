@@ -10,14 +10,12 @@
         line-height: 16.41px;
         color: $light-grey-color;
         padding: 10px 10px 10px 68px;
- 
     }
 
     &__input {
         position: absolute;
         opacity: 0;
         top: 0;
-        
     }
 
     &__checkmark {
@@ -27,8 +25,8 @@
         height: 40px;
         width: 40px;
         background-color: inherit;
-        border: 2px solid $black-color; 
-        cursor: pointer;     
+        border: 2px solid $black-color;
+        cursor: pointer;
 
         &:after {
             left: 13px;
@@ -42,6 +40,10 @@
             content: "";
             position: absolute;
             display: none;
+        }
+
+        &:hover {
+            border: 3px solid $black-color;
         }
     }
 
