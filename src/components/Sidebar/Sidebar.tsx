@@ -25,6 +25,13 @@ const Sidebar = () => {
       if (e.key >= "0" && e.key <= "9") {
         setDialedNumber(parseInt(e.key))
       } 
+      if(e.key === "Backspace") {
+        const numArr =  phoneNumber.slice(2).split('').reverse()
+        const idx = numArr.findIndex(i => !Number.isNaN(+i));
+        numArr[idx]='_';
+        const changedNumber = phoneNumber.slice(0,2) + numArr.reverse().join('');
+        setPhoneNumber(changedNumber)
+      }
     };
     
     window.addEventListener("keydown", handleKeyPress);
@@ -43,6 +50,8 @@ const Sidebar = () => {
         phoneArr[itemIdx] = String(value);
       }
       setPhoneNumber(phoneArr.join("").replace(/\s/g, ""));
+
+
       setIsError(false);
     } else {
       setIsError(false);
@@ -57,7 +66,6 @@ const Sidebar = () => {
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
   };
-
 
   const onSubmit = (event) => {
     event.preventDefault();

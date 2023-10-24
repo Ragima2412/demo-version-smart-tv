@@ -13,7 +13,6 @@ const Form:FC<IForm> = ({
   onSubmit,
   isDisabled
 }) => {
-  console.log(isDisabled)
   return (
     <form className="sidebar__form form">
       <h3 className="form__header">Введите ваш номер мобильного телефона</h3>
@@ -36,7 +35,6 @@ const Form:FC<IForm> = ({
       />
       <button
         className={!isDisabled ? "form__submit-btn--disabled button": "form__submit-btn button"}
-        // disabled={checkEmptySpaces(phoneNumber) || !isChecked}
         onClick={(e) => onSubmit(e)}
       >
         Подтвердить номер
